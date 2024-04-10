@@ -1,0 +1,66 @@
+<title>Monkey Type Clone - Test your typing speed and accuracy</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --green: #00b755;
+    --yellow: #daaf38;
+    --red: #ca4754;
+    --black: #222;
+    --gray: #999;
+  }
+
+  body {
+    font-family: Menlo, monospace;
+    background: var(--black);
+    display: grid;
+    padding: 32px;
+    justify-content: center;
+    margin-top: 32px;
+    padding: 16px;
+  }
+</style>
+
+<body>
+  <main>
+    <section id="game">
+      <time></time>
+      <p></p>
+      <input autofocus />
+    </section>
+  </main>
+</body>
+
+<script>
+  const $time = document.querySelector("time");
+  const $paragraph = document.querySelector("p");
+  const $input = document.querySelector("input");
+
+  const INITIAL_TIME = 30;
+
+  const TEXT = "The quick brown fox jumps over the lazy dog.";
+
+  let words = [];
+  let currentTime = INITIAL_TIME;
+
+  initGame();
+  initEvents();
+
+  function initGame() {
+    words = TEXT.split(" ").slice(0, 32);
+    currentTime = INITIAL_TIME;
+
+    $time.textContent = currentTime;
+
+    $paragraph.innerHTML = words
+      .map((word, index) => {
+        if (index === 0) {
+          return `<span class="current">${word}</span>`;
+        }
+
+        return `<span>${word}</span>`;
+      })
+      .join(" ");
+  }
+
+  function initEvents() {}
+</script>
